@@ -7,10 +7,12 @@ public class EnemyChaserScript : MonoBehaviour
     
     private GameObject playerReference;
     private float hitTimer; // determines time between damaging player
+    
 
     [SerializeField] private float movementSpeed;
     [SerializeField] private int damage;
     [SerializeField] private float timeBetweenAttacks;
+    [SerializeField] private float distanceToPlayer; // determines if it should try getting closer to player
     
     void Start()
     {
@@ -19,7 +21,11 @@ public class EnemyChaserScript : MonoBehaviour
 
     void FixedUpdate()
     {
-        this.transform.position = Vector3.MoveTowards(this.transform.position, playerReference.transform.position, movementSpeed);
+        if (Vector3.Distance(this.transform.position, playerReference.transform.position) > distanceToPlayer)
+        {
+            this.transform.position = Vector3.MoveTowards(this.transform.position, playerReference.transform.position, movementSpeed);
+        }
+
         hitTimer -= Time.deltaTime;
     }
 
