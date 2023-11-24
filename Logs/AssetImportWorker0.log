@@ -2866,3 +2866,19 @@ AssetImportParameters requested are different than current active one (requested
   custom:video-encoder-webm-vp8: eb34c28f22e8b96e1ab97ce403110664 -> 
   custom:audio-decoder-ogg-vorbis: bf7c407c2cedff20999df2af8eb42d56 -> 
   custom:audio-encoder-webm-vorbis: bf7c407c2cedff20999df2af8eb42d56 -> 
+========================================================================
+Received Import Request.
+  Time since last request: 1934.185305 seconds.
+  path: Assets/Scripts/Enemy.cs
+  artifactKey: Guid(6f3e29680f4d6204388f889743654599) Importer(815301076,1909f56bfc062723c751e8b465ee728b)
+Start importing Assets/Scripts/Enemy.cs using Guid(6f3e29680f4d6204388f889743654599) Importer(815301076,1909f56bfc062723c751e8b465ee728b)  -> (artifact id: '0d7331798a5b18aa10774d08b5c3fb7d') in 0.003265 seconds
+Number of updated asset objects reloaded before import = 0
+Number of asset objects unloaded after import = 0
+========================================================================
+Received Import Request.
+  Time since last request: 18.921457 seconds.
+  path: Assets/Scripts/Enemy.cs
+  artifactKey: Guid(6f3e29680f4d6204388f889743654599) Importer(815301076,1909f56bfc062723c751e8b465ee728b)
+Start importing Assets/Scripts/Enemy.cs using Guid(6f3e29680f4d6204388f889743654599) Importer(815301076,1909f56bfc062723c751e8b465ee728b)  -> (artifact id: '05c46465f85f2a3d0b744fb442d1f2b7') in 0.000874 seconds
+Number of updated asset objects reloaded before import = 0
+Number of asset objects unloaded after import = 0
