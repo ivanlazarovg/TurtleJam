@@ -3,10 +3,11 @@ using UnityEngine;
 public class PlayerController : MonoBehaviour {
     private float horizontalAxis;
     private float verticalAxis;
-    [SerializeField]
-    private float moveSpeed;
-    [SerializeField]
-    private GameObject playerProjectile;
+
+    [SerializeField] private float moveSpeed;
+    [SerializeField] private GameObject playerProjectile;
+
+    public int baseDamage; 
 
     private void Update() {
         horizontalAxis = Input.GetAxisRaw("Horizontal");
@@ -21,6 +22,6 @@ public class PlayerController : MonoBehaviour {
 
     private void FireProjectile() {
         GameObject projectile = Instantiate(playerProjectile, transform.position, transform.rotation);
-        projectile.GetComponent<PlayerProjectile>().SetStats(0.1f, 1, 0);
+        projectile.GetComponent<PlayerProjectile>().SetStats(0.1f, baseDamage, 10);
     }
 }

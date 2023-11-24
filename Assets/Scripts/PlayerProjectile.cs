@@ -33,10 +33,11 @@ public class PlayerProjectile : MonoBehaviour {
             }
             else 
             {
-                var hits = Physics.OverlapSphere(this.transform.position, areaSize);
-                Debug.Log(hits);
+                var hits = Physics2D.OverlapCircleAll(transform.position, areaSize);
+                
                 foreach(var hit in hits) 
                 {
+                    Debug.Log(hit.name);
                     if (hit.CompareTag("Enemy")) 
                     {
                         hit.gameObject.GetComponent<EnemyHealthScript>().TakeDamage(damage);
