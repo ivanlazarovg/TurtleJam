@@ -135,6 +135,7 @@ GameObject:
   - component: {fileID: 403556801}
   - component: {fileID: 403556803}
   - component: {fileID: 403556804}
+  - component: {fileID: 403556805}
   m_Layer: 0
   m_Name: EnemyTemp
   m_TagString: Enemy
@@ -281,6 +282,19 @@ Rigidbody2D:
   m_SleepingMode: 1
   m_CollisionDetection: 0
   m_Constraints: 0
+--- !u!114 &403556805
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 403556800}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 387a59ba0a0117040aa753726858bf2c, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  health: 10
 --- !u!1 &497712506
 GameObject:
   m_ObjectHideFlags: 0

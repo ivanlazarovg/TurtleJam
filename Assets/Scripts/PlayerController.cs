@@ -20,6 +20,7 @@ public class PlayerController : MonoBehaviour {
     }
 
     private void FireProjectile() {
-        Instantiate(playerProjectile, transform.position, transform.rotation);
+        GameObject projectile = Instantiate(playerProjectile, transform.position, transform.rotation);
+        projectile.GetComponent<PlayerProjectile>().SetStats(0.1f, 1, 0);
     }
 }
