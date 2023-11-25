@@ -24,6 +24,9 @@ public class PlayerController : MonoBehaviour {
     [SerializeField] private GameObject sword;
     [SerializeField] private GameObject throwingDagger;
 
+    [SerializeField] Animator animator;
+    
+
     private void Start()
     {
         audioSource = GetComponent<AudioSource>();
@@ -37,6 +40,16 @@ public class PlayerController : MonoBehaviour {
     private void Update() {
         horizontalAxis = Input.GetAxisRaw("Horizontal");
         verticalAxis = Input.GetAxisRaw("Vertical");
+        animator.SetFloat("Speed", Mathf.Abs(horizontalAxis) + Mathf.Abs(verticalAxis));
+        if (horizontalAxis > 0)
+        {
+            animator.transform.GetComponent<SpriteRenderer>().flipX = false;
+        }
+        if (horizontalAxis < 0)
+        {
+            animator.transform.GetComponent<SpriteRenderer>().flipX = true;
+        }
+
     }
 
     private void FixedUpdate() {
