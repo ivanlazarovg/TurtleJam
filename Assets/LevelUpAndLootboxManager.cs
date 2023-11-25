@@ -11,6 +11,12 @@ public class LevelUpAndLootboxManager : MonoBehaviour
     [SerializeField] private float levelUpPrice;
     [SerializeField] private float lootboxPrice;
 
+    [SerializeField] AudioClip LevelUpClip;
+    [SerializeField] AudioClip LootboxClip;
+    [SerializeField] AudioClip WrongClip;
+
+    [SerializeField] AudioSource audioSource;
+
     private void Start()
     {
         levelUpButt.onClick.AddListener(LevelUp);
@@ -20,11 +26,11 @@ public class LevelUpAndLootboxManager : MonoBehaviour
 
     void LevelUp() 
     {
-        if (CoinsHub.Instance.coins >= levelUpPrice) 
+        if (CoinsHub.Instance.coins >= levelUpPrice)
         {
             CoinsHub.Instance.coins -= levelUpPrice;
 
-            PossibleUpgrades currentUpgrade = (PossibleUpgrades)Random.Range(0,4);
+            PossibleUpgrades currentUpgrade = (PossibleUpgrades)Random.Range(0, 4);
             switch (currentUpgrade) // don't remove brackets, that way we spare memory
             {
                 case PossibleUpgrades.Health:
@@ -45,7 +51,7 @@ public class LevelUpAndLootboxManager : MonoBehaviour
                         playerController.IncreaseDamage(15);
                         break;
                     }
-                        
+
                 case PossibleUpgrades.MovementSpeed:
                     {
                         PlayerController playerController = FindAnyObjectByType<PlayerController>();
@@ -57,6 +63,13 @@ public class LevelUpAndLootboxManager : MonoBehaviour
             }
 
             Debug.Log(currentUpgrade + " got an upgrade!");
+            audioSource.clip = LevelUpClip;
+            audioSource.Play();
+        }
+        else 
+        {
+            audioSource.clip = WrongClip;
+            audioSource.Play();
         }
     }
 
