@@ -9,6 +9,9 @@ public class TaskCrypto : MonoBehaviour
     public Transform rightPoint;
     public Transform centerPoint;
     public GameObject window;
+    public GameObject bar;
+    public GameObject button;
+    public SpriteRenderer orePlaceHolder;
     float timer = 0;
     bool pingpongswitch = false;
     public float pointerSpeed;
@@ -17,10 +20,13 @@ public class TaskCrypto : MonoBehaviour
     public float pointDifficulty;
     public bool isInWindow = false;
 
-    int interactionPhase = 1;
+    int interactionPhase = 0;
 
     float pointerDistanceFromCenter;
     float pointerDistanceFromCenterRaw;
+
+    private int currentHealth;
+    private Color currentColor;
 
     private static TaskCrypto _instance;
 
@@ -37,10 +43,19 @@ public class TaskCrypto : MonoBehaviour
         }
     }
 
+
     // Update is called once per frame
     void Update()
     {
-        if(interactionPhase == 1)
+
+        if(interactionPhase == 0)
+        {
+            if (Input.GetKeyUp(KeyCode.Space))
+            {
+                interactionPhase = 1;
+            }
+        }
+        else if(interactionPhase == 1)
         {
             StartState();
         }
@@ -73,17 +88,31 @@ public class TaskCrypto : MonoBehaviour
 
     void StartState()
     { 
-        if (Input.GetMouseButtonDown(0) && isInWindow)
-        {
-            Debug.Log("Started");
-            interactionPhase++;
-        }
-        else if (Input.GetMouseButtonDown(0) && !isInWindow)
-        {
-            Debug.Log("Missed");
-        }
+        
         pointerSpeed = pointerSpeedStartState;
         window.SetActive(true);
+        bar.SetActive(true);
+        button.SetActive(true);
+    }
+
+    public void MineButton()
+    {
+        if (interactionPhase == 1)
+        {
+            if (isInWindow)
+            {
+                Debug.Log("Started");
+                interactionPhase++;
+            }
+            else if (isInWindow)
+            {
+                Debug.Log("Missed");
+            }
+        }
+        else if(interactionPhase == 2)
+        {
+            currentHealth -= (int)pointerDistanceFromCenter;
+        }
     }
 
     void MineState()
@@ -100,10 +129,22 @@ public class TaskCrypto : MonoBehaviour
         pointerDistanceFromCenter = Mathf.Round(pointerDistanceFromCenterRaw/(3+pointDifficulty));
         pointerSpeed = 1.3f + pointerDistanceFromCenterRaw / 3;
 
-        if (Input.GetMouseButtonDown(0))
+        if(currentHealth <= 0)
         {
-            Debug.Log(pointerDistanceFromCenter);
+            GetNextOre();
         }
+        
     }
 
+    public void GetNextOre()
+    {
+        currentHealth = OreGenerator.Instance.orePresets[OreGenerator.Instance.oreIndex].healthPoints;
+        currentColor = OreGenerator.Instance.orePresets[OreGenerator.Instance.oreIndex].oreColor;
+        orePlaceHolder.color = currentColor;
+        OreGenerator.Instance.oreIndex++;
+        bar.SetActive(false);
+        button.SetActive(false);
+        interactionPhase = 0;
+
+    }
 }
