@@ -14,15 +14,10 @@ public class EnemyChaserScript : MonoBehaviour
     [SerializeField] private float timeBetweenAttacks;
     [SerializeField] private float distanceToPlayer; // determines if it should try getting closer to player
 
-    [SerializeField] AudioClip moveSound;
-
-    AudioSource audioSource;
-
     
     void Start()
     {
         playerReference = FindAnyObjectByType<PlayerController>().gameObject;
-        audioSource = GetComponent<AudioSource>();
     }
 
     void FixedUpdate()
@@ -30,12 +25,6 @@ public class EnemyChaserScript : MonoBehaviour
         if (Vector3.Distance(this.transform.position, playerReference.transform.position) > distanceToPlayer)
         {
             this.transform.position = Vector3.MoveTowards(this.transform.position, playerReference.transform.position, movementSpeed);
-
-            if (!audioSource.isPlaying)
-            {
-                audioSource.clip = moveSound;
-                audioSource.Play();
-            }
         }
 
         hitTimer -= Time.deltaTime;

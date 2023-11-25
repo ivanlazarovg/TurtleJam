@@ -4,7 +4,7 @@ using UnityEngine;
 
 public class EnemyHealthScript : MonoBehaviour
 {
-    private int health;
+    [SerializeField] private int health;
     [SerializeField] private int maxHealth;
 
     private void Start()
