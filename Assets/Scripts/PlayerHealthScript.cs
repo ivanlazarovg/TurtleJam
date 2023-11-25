@@ -9,6 +9,5 @@ public class PlayerHealthScript : MonoBehaviour
     public void TakeDamage(int damage) 
     {
         health -= damage;
-        Debug.Log("Player Health: " + health);
     }
 }
