@@ -12,13 +12,15 @@ public class EnemyManagerScript : MonoBehaviour
     public float difficulty;
     public float maxDifficulty;
     public float timeTillNextEnemy;
-    public float currentTime;
+    float currentTime;
 
     GameObject playerReference;
+    AudioSource audioSource;
 
     private void Start()
     {
         playerReference = FindAnyObjectByType<PlayerHealthScript>().gameObject;
+        audioSource = GetComponent<AudioSource>();
     }
 
     void FixedUpdate()
@@ -50,6 +52,7 @@ public class EnemyManagerScript : MonoBehaviour
         else 
         {
             Instantiate(LightRangedEnemy, RandomCircle(playerReference.transform.position, distanceToSpawn), Quaternion.identity);
+            audioSource.Play();
         }
     }
 

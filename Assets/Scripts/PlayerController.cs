@@ -9,7 +9,15 @@ public class PlayerController : MonoBehaviour {
     [SerializeField] private float timeUntilAttack;
 
     public float baseAttackSpeed;
-    public int baseDamage; 
+    public int baseDamage;
+    [SerializeField] private AudioClip walkingClip;
+
+    private AudioSource audioSource;
+
+    private void Start () 
+    {
+        audioSource = GetComponent<AudioSource>();
+    }
 
     private void Update() {
         horizontalAxis = Input.GetAxisRaw("Horizontal");
@@ -17,6 +25,7 @@ public class PlayerController : MonoBehaviour {
     }
 
     private void FixedUpdate() {
+
         transform.position += new Vector3(horizontalAxis, verticalAxis, 0).normalized * moveSpeed;
 
         if (timeUntilAttack <= 0)
@@ -26,10 +35,31 @@ public class PlayerController : MonoBehaviour {
         }
 
         timeUntilAttack -= Time.deltaTime;
+
+        if (!audioSource.isPlaying && (horizontalAxis != 0 || verticalAxis != 0)) 
+        {
+            audioSource.clip = walkingClip;
+            audioSource.Play();
+        }
     }
 
     private void FireProjectile() {
         GameObject projectile = Instantiate(playerProjectile, transform.position, transform.rotation);
         projectile.GetComponent<PlayerProjectile>().SetStats(0.1f, baseDamage, 0, PlayerProjectile.ShotType.ClosestEnemy);
+    }
+
+    public void IncreaseMovementSpeed(int percent) 
+    {
+        moveSpeed += moveSpeed * percent / 100;
+    }
+
+    public void IncreaseDamage(int percent)
+    {
+        baseDamage += baseDamage * percent / 100;
+    }
+
+    public void IncreaseAttackSpeed(int percent)
+    {
+        baseAttackSpeed -= baseAttackSpeed * (float)percent / 100;
     }
 }

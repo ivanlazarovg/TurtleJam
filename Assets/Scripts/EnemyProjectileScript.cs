@@ -13,7 +13,7 @@ public class EnemyProjectileScript : MonoBehaviour
         Invoke(nameof(KillYourself), 2f);
     }
 
-    public void SetStats(float speed, int damage) // if areaSize is set to 0, damages a single enemy!!!
+    public void SetStats(float speed, int damage) 
     {
         moveSpeed = speed;
         this.damage = damage;
@@ -29,7 +29,7 @@ public class EnemyProjectileScript : MonoBehaviour
         Destroy(this.gameObject);
     }
 
-    private void OnCollisionStay2D(Collision2D collision)
+    private void OnCollisionEnter2D(Collision2D collision)
     {
         if (collision.collider.CompareTag("Player"))
         {

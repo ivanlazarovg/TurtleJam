@@ -11,8 +11,8 @@ public class PlayerProjectile : MonoBehaviour {
     private ShotType shotType;
     private GameObject targetReference;
 
-    private void OnEnable() {
-        Invoke(nameof(KillYourself), 2f);
+    private void OnEnable() { 
+        Invoke(nameof(KillYourself), 5f);
     }
 
     public void SetStats(float speed, int damage, float areaSize, ShotType shotType) // if areaSize is set to 0, damages a single enemy!!!
@@ -62,7 +62,6 @@ public class PlayerProjectile : MonoBehaviour {
                 
                 foreach(var hit in hits) 
                 {
-                    Debug.Log(hit.name);
                     if (hit.CompareTag("Enemy")) 
                     {
                         hit.gameObject.GetComponent<EnemyHealthScript>().TakeDamage(damage);
