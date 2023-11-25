@@ -9,9 +9,24 @@ public class SpreadSheetGenerator : MonoBehaviour
     public List<BoxTable> boxPicksList;
     int boxPick;
 
-    private void Start()
+    private static SpreadSheetGenerator instance;
+    public static SpreadSheetGenerator Instance
     {
-        foreach(SlotSpreadsheet slot in Resources.FindObjectsOfTypeAll(typeof(SlotSpreadsheet)))
+        get
+        {
+            if (instance == null)
+            {
+                instance = GameObject.FindObjectOfType<SpreadSheetGenerator>();
+            }
+
+            return instance;
+
+        }
+    }
+
+    public void GenerateTable()
+    {
+        foreach (SlotSpreadsheet slot in Resources.FindObjectsOfTypeAll(typeof(SlotSpreadsheet)))
         {
             boxPick = Random.Range(0, boxPicksList.Count);
             slot.tier.amount = boxPicksList[boxPick].tier.amount;
@@ -20,6 +35,7 @@ public class SpreadSheetGenerator : MonoBehaviour
             boxPicksList.RemoveAt(boxPick);
 
             slot.slotColor = boxColorPicks[Random.Range(0, boxColorPicks.Length)];
+            slot.amountText.text = slot.tier.amount.ToString();
         }
     }
 }
