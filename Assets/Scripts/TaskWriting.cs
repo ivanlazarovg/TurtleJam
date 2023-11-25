@@ -23,6 +23,21 @@ public class TaskWriting : Task
     public float taskTimer;
     bool isTaskRunning = false;
 
+    private static TaskWriting _instance;
+
+    public static TaskWriting Instance
+    {
+        get
+        {
+            if (_instance == null)
+            {
+                _instance = GameObject.FindObjectOfType<TaskWriting>();
+            }
+
+            return _instance;
+        }
+    }
+
     void Start()
     {
         words = wordsFile.ToString().ToLower().Split("\n");
@@ -41,8 +56,9 @@ public class TaskWriting : Task
         //CompareAndUpdateText();
         textStencil.text = currentWords;
         textWrittenTmPro.text =  textWritten;
+        
 
-        if(isMistake)
+        if (isMistake)
         {
             timer += Time.deltaTime;
             if(timer > 1)
@@ -61,10 +77,11 @@ public class TaskWriting : Task
     void GenerateWordString()
     {
         int wordlength = Random.Range(1, 5);
+        currentWords += words[Random.Range(1, words.Length)];
 
         for (int i = 0; i < wordlength; i++)
         {
-            currentWords += words[Random.Range(1, words.Length)] + " ";
+            currentWords += " " + words[Random.Range(1, words.Length)];
 
         }
         textStencil.text = currentWords;
@@ -75,16 +92,20 @@ public class TaskWriting : Task
     private void OnGUI()
     {
         Event e = Event.current;
-        if (e.isKey && e.type == EventType.KeyDown && e.keyCode != KeyCode.None && !isMistake)
+        if (e.isKey && e.type == EventType.KeyDown && e.keyCode != KeyCode.None && !isMistake && isTaskRunning)
         {
-            if(index == currentWords.Length)
+            Debug.Log(currentWords.Length);
+            Debug.Log(index);
+
+            if (index == currentWords.Length)
             {
                 isTaskRunning = false;
-                AddCoins(currentWords.Length/6 + Mathf.Abs(currentWords.Length - taskTimer));
+                AddCoins(currentWords.Length / 6 + Mathf.Abs(currentWords.Length - taskTimer));
+                Debug.Log(CoinsHub.Instance.coins);
+
             }
             if (((char)e.keyCode) == currentWords[index])
             {
-                currentWords.Replace(currentWords[index], ' ');
                 textWritten += "<color=\"green\">" + currentWords[index];
                 if (currentWords[index + 1] == ' ')
                 {
@@ -97,16 +118,22 @@ public class TaskWriting : Task
             {
                 while (currentWords[index] != ' ')
                 {
-                    currentWords.Replace(currentWords[index], ' ');
                     textWritten += "<color=\"red\">" + currentWords[index];
                     index++;
+                    if (index == currentWords.Length)
+                    {
+                        isTaskRunning = false;
+                        AddCoins(currentWords.Length / 6 + Mathf.Abs(currentWords.Length - taskTimer));
+
+                    }
                 }
                 timer = 0;
                 isMistake = true;
-                coinYield -= 0.5f;
+                coinYield -= 6f;
                 index++;
                 textWritten += ' ';
             }
+            
         }
         
     }
