@@ -14,8 +14,7 @@ public class OreGenerator : MonoBehaviour
     public static OreGenerator Instance
     {
         get 
-        { 
-            
+        {       
             if (instance == null)
             {
                 instance = GameObject.FindObjectOfType<OreGenerator>();
