@@ -15,12 +15,13 @@ public class LevelUpAndLootboxManager : MonoBehaviour
     [SerializeField] AudioClip LootboxClip;
     [SerializeField] AudioClip WrongClip;
 
-    [SerializeField] AudioSource audioSource;
+    AudioSource audioSource;
 
     private void Start()
     {
         levelUpButt.onClick.AddListener(LevelUp);
-
+        lootboxButt.onClick.AddListener(GetLootBox);
+        audioSource = GetComponent<AudioSource>();
         CoinsHub.Instance.coins += 10;
     }
 
@@ -64,6 +65,20 @@ public class LevelUpAndLootboxManager : MonoBehaviour
 
             Debug.Log(currentUpgrade + " got an upgrade!");
             audioSource.clip = LevelUpClip;
+            audioSource.Play();
+        }
+        else 
+        {
+            audioSource.clip = WrongClip;
+            audioSource.Play();
+        }
+    }
+    void GetLootBox() 
+    {
+        if (CoinsHub.Instance.coins >= lootboxPrice)
+        {
+            CoinsHub.Instance.coins -= lootboxPrice;
+            audioSource.clip = LootboxClip;
             audioSource.Play();
         }
         else 
