@@ -22,6 +22,6 @@ public class PlayerController : MonoBehaviour {
 
     private void FireProjectile() {
         GameObject projectile = Instantiate(playerProjectile, transform.position, transform.rotation);
-        projectile.GetComponent<PlayerProjectile>().SetStats(0.1f, baseDamage, 10);
+        projectile.GetComponent<PlayerProjectile>().SetStats(0.1f, baseDamage, 10, PlayerProjectile.ShotType.ClosestEnemy);
     }
 }
