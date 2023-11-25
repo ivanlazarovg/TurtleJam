@@ -412,12 +412,17 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 36024e61dc4573147bacdd962fb1a2e7, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  moveSpeed: 0.1
-  playerProjectile: {fileID: 5005030630342888848, guid: 9506ca8717b3e1540bb801c54cde0a15, type: 3}
+  moveSpeed: 0.05
   timeUntilAttack: 0
   baseAttackSpeed: 1
-  baseDamage: 5
+  baseDamage: 2
   walkingClip: {fileID: 8300000, guid: 473ac723dc61f9f439dff8f00d222112, type: 3}
+  playerProjectile: {fileID: 5005030630342888848, guid: 9506ca8717b3e1540bb801c54cde0a15, type: 3}
+  magicMissile: {fileID: 5005030630342888848, guid: 5f3d016ef716e264791477df69c44d12, type: 3}
+  fireball: {fileID: 5005030630342888848, guid: 6917da28b4584964690452faaf3d65e7, type: 3}
+  iceRing: {fileID: 5005030630342888848, guid: 361a087e76c2afe48aace0a923934a5e, type: 3}
+  sword: {fileID: 5005030630342888848, guid: 2b692623394c2d34b9849a6fed256116, type: 3}
+  throwingDagger: {fileID: 5005030630342888848, guid: 8ff0a2a3203eed94a9227e635f3f67c9, type: 3}
 --- !u!212 &497712508
 SpriteRenderer:
   m_ObjectHideFlags: 0
@@ -705,7 +710,6 @@ MonoBehaviour:
   difficulty: 0
   maxDifficulty: 100
   timeTillNextEnemy: 2
-  currentTime: 0
 --- !u!4 &512332957
 Transform:
   m_ObjectHideFlags: 0
