@@ -22,6 +22,7 @@ public class EnemyChaserScript : MonoBehaviour
     void Start()
     {
         playerReference = FindAnyObjectByType<PlayerController>().gameObject;
+        audioSource = GetComponent<AudioSource>();
     }
 
     void FixedUpdate()
