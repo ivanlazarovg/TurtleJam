@@ -1,6 +1,4 @@
 using UnityEngine;
-using UnityEngine.UI;
-using static UnityEngine.GraphicsBuffer;
 
 public class PlayerProjectile : MonoBehaviour {
     [SerializeField] private float moveSpeed;
