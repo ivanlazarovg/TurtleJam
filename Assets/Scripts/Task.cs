@@ -4,10 +4,10 @@ using UnityEngine;
 
 public class Task : MonoBehaviour
 {
-    public decimal coinYield;
+    public float coinYield = 0;
 
-    static void AddCoins()
+    public static void AddCoins(float coinYield)
     {
-        //currentCurrency += coinYield
+        CoinsHub.Instance.coins += coinYield;
     }
 }
