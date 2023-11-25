@@ -49,21 +49,19 @@ public class LevelUpAndLootboxManager : MonoBehaviour
                 case PossibleUpgrades.AttackSpeed:
                     {
                         PlayerController playerController = FindAnyObjectByType<PlayerController>();
-                        playerController.IncreaseDamage(15);
+                        playerController.IncreaseAttackSpeed(15);
                         break;
                     }
 
                 case PossibleUpgrades.MovementSpeed:
                     {
                         PlayerController playerController = FindAnyObjectByType<PlayerController>();
-                        playerController.IncreaseDamage(15);
+                        playerController.IncreaseMovementSpeed(15);
                         break;
                     }
                 case PossibleUpgrades.Luck: // intentional game design
                     break;
             }
-
-            Debug.Log(currentUpgrade + " got an upgrade!");
             audioSource.clip = LevelUpClip;
             audioSource.Play();
         }

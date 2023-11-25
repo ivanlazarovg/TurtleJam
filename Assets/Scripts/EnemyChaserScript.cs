@@ -29,6 +29,7 @@ public class EnemyChaserScript : MonoBehaviour
         if (Vector3.Distance(this.transform.position, playerReference.transform.position) > distanceToPlayer)
         {
             this.transform.position = Vector3.MoveTowards(this.transform.position, playerReference.transform.position, movementSpeed);
+
             if (!audioSource.isPlaying)
             {
                 audioSource.clip = moveSound;

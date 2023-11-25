@@ -12,7 +12,7 @@ public class EnemyManagerScript : MonoBehaviour
     public float difficulty;
     public float maxDifficulty;
     public float timeTillNextEnemy;
-    public float currentTime;
+    float currentTime;
 
     GameObject playerReference;
     AudioSource audioSource;
