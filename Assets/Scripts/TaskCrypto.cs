@@ -90,8 +90,8 @@ public class TaskCrypto : MonoBehaviour
     { 
         
         pointerSpeed = pointerSpeedStartState;
-        window.SetActive(true);
         bar.SetActive(true);
+        window.SetActive(true);
         button.SetActive(true);
     }
 
