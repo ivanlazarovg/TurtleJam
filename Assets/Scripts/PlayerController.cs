@@ -32,4 +32,19 @@ public class PlayerController : MonoBehaviour {
         GameObject projectile = Instantiate(playerProjectile, transform.position, transform.rotation);
         projectile.GetComponent<PlayerProjectile>().SetStats(0.1f, baseDamage, 0, PlayerProjectile.ShotType.ClosestEnemy);
     }
+
+    public void IncreaseMovementSpeed(int percent) 
+    {
+        moveSpeed += moveSpeed * percent / 100;
+    }
+
+    public void IncreaseDamage(int percent)
+    {
+        baseDamage += baseDamage * percent / 100;
+    }
+
+    public void IncreaseAttackSpeed(int percent)
+    {
+        baseAttackSpeed -= baseAttackSpeed * (float)percent / 100;
+    }
 }
