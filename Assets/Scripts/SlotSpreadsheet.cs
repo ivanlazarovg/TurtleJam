@@ -11,10 +11,11 @@ public class SlotSpreadsheet : MonoBehaviour
     public bool isQuickTimeEvent;
     public TextMeshProUGUI amountText;
     public SpriteRenderer slotSprite;
-    public bool isActive;
+    public bool isActive = true;
 
     private void Start()
     {
+        isActive = true; 
         slotSprite = GetComponent<SpriteRenderer>();
     }
 

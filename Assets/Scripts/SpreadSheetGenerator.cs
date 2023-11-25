@@ -9,6 +9,8 @@ public class SpreadSheetGenerator : MonoBehaviour
     public List<BoxTable> boxPicksList;
     int boxPick;
 
+    [HideInInspector]
+    public List<BoxTable> boxPicks;
     private static SpreadSheetGenerator instance;
     public static SpreadSheetGenerator Instance
     {
@@ -26,13 +28,17 @@ public class SpreadSheetGenerator : MonoBehaviour
 
     public void GenerateTable()
     {
+        boxPicks = new List<BoxTable>(boxPicksList);
+        TaskSpreadSheet.Instance.timerSinceStart = 0;
+        TaskSpreadSheet.Instance.won = false;
         foreach (SlotSpreadsheet slot in Resources.FindObjectsOfTypeAll(typeof(SlotSpreadsheet)))
         {
-            boxPick = Random.Range(0, boxPicksList.Count);
-            slot.tier.amount = boxPicksList[boxPick].tier.amount;
-            slot.tier.tier = boxPicksList[boxPick].tier.tier;
+            boxPick = Random.Range(0, boxPicks.Count);
+            slot.tier.amount = boxPicks[boxPick].tier.amount;
+            slot.tier.tier = boxPicks[boxPick].tier.tier;
+            slot.isActive = true;
 
-            boxPicksList.RemoveAt(boxPick);
+            boxPicks.RemoveAt(boxPick);
 
             slot.slotColor = boxColorPicks[Random.Range(0, boxColorPicks.Length)];
             slot.amountText.text = slot.tier.amount.ToString();

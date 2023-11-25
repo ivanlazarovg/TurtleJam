@@ -1,8 +1,9 @@
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using TMPro;
 
-public class TaskSpreadSheet : MonoBehaviour
+public class TaskSpreadSheet : Task
 {
     private bool boxSelected;
     SlotSpreadsheet selectedSlot;
@@ -13,7 +14,11 @@ public class TaskSpreadSheet : MonoBehaviour
     float t = 0;
     bool canChangeColor = false;
     public SpriteRenderer backdrop;
-    private float timerSinceStart;
+    public float timerSinceStart;
+    public bool won = false;
+
+    public GameObject winPanel;
+    public TextMeshProUGUI scoreWinCondition;
 
     private static TaskSpreadSheet instance;
     public static TaskSpreadSheet Instance
@@ -32,15 +37,16 @@ public class TaskSpreadSheet : MonoBehaviour
 
     private void Start()
     {
+        SpreadSheetGenerator.Instance.boxPicks = SpreadSheetGenerator.Instance.boxPicksList;
         SpreadSheetGenerator.Instance.GenerateTable();
     }
 
     void UpdateSlots()
     {
-        timerSinceStart += Time.deltaTime;
+        if (!won)
+            timerSinceStart += Time.deltaTime;
         foreach (SlotSpreadsheet slot in Resources.FindObjectsOfTypeAll(typeof(SlotSpreadsheet)))
         {
-            
             if(!canChangeColor)
             slot.slotSprite.color = slot.slotColor;
         }
@@ -49,6 +55,7 @@ public class TaskSpreadSheet : MonoBehaviour
     void Update()
     {
         UpdateSlots();
+
 
         if (boxSelected == false)
         {
@@ -71,37 +78,34 @@ public class TaskSpreadSheet : MonoBehaviour
 
             if (Input.GetMouseButtonDown(0))
             {
-                if (hit.collider.gameObject.GetComponent<SlotSpreadsheet>() != null)
-                {
-                    SlotSpreadsheet currentSlot = hit.collider.gameObject.GetComponent<SlotSpreadsheet>();
-                    if (currentSlot.tier.tier == selectedSlot.tier.tier && currentSlot != selectedSlot)
-                    {
-                        StartCoroutine(ColorFlash(currentSlot.slotColor, Color.yellow, currentSlot.slotSprite, flashSpeedSelect));
+                if (hit.collider != null)
 
-                        currentSlot.tier.tier++;
-                        currentSlot.tier.amount *= 2;
-                        currentSlot.amountText.text = currentSlot.tier.amount.ToString();
-                        selectedSlot.Nullify();
-                        if(currentSlot.tier.amount >= 80)
+                {
+                    if (hit.collider.gameObject.GetComponent<SlotSpreadsheet>() != null)
+                    {
+                        SlotSpreadsheet currentSlot = hit.collider.gameObject.GetComponent<SlotSpreadsheet>();
+                        if (currentSlot.tier.tier == selectedSlot.tier.tier && currentSlot != selectedSlot)
                         {
-                            currentSlot.Nullify();
-                            foreach(SlotSpreadsheet slot in Resources.FindObjectsOfTypeAll(typeof(SlotSpreadsheet)))
+                            StartCoroutine(ColorFlash(currentSlot.slotColor, Color.yellow, currentSlot.slotSprite, flashSpeedSelect));
+
+                            currentSlot.tier.tier++;
+                            currentSlot.tier.amount *= 2;
+                            currentSlot.amountText.text = currentSlot.tier.amount.ToString();
+                            selectedSlot.Nullify();
+                            if (currentSlot.tier.amount >= 80)
                             {
-                                if (slot.isActive)
-                                {
-                                    return;
-                                }
-                                WinCondition();
+                                currentSlot.Nullify();
+                                CheckIfAllDone();
                             }
                         }
+                        else
+                        {
+                            StartCoroutine(ColorFlash(backdrop.color, Color.red,
+                               backdrop, flashSpeedFail));
+                        }
+
+                        boxSelected = false;
                     }
-                    else
-                    {
-                        StartCoroutine(ColorFlash(backdrop.color, Color.red,
-                           backdrop, flashSpeedFail));
-                    }
-                            
-                    boxSelected = false;
                 }
             }
         }
@@ -138,12 +142,32 @@ public class TaskSpreadSheet : MonoBehaviour
 
     void WinCondition()
     {
-        this.transform.GetChild(0);
+        won = true;
+        this.transform.GetChild(0).gameObject.SetActive(false);
+        winPanel.SetActive(true);
+        AddCoins(5 + (20 - timerSinceStart));
+        scoreWinCondition.text = (5 + (20 - timerSinceStart)).ToString();
+    }
 
-        //if buttonpressed
+    public void NewTable()
+    {
+        this.transform.GetChild(0).gameObject.SetActive(true);
+        winPanel.SetActive(false);
         SpreadSheetGenerator.Instance.GenerateTable();
     }
 
+    void CheckIfAllDone()
+    {
+        foreach (SlotSpreadsheet slot in Resources.FindObjectsOfTypeAll(typeof(SlotSpreadsheet)))
+        {
+            if (slot.isActive)
+            {
+                return;
+            }
 
+        }
+        WinCondition();
+
+    }
 
 }
