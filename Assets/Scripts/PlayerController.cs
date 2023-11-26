@@ -31,8 +31,8 @@ public class PlayerController : MonoBehaviour {
     {
         audioSource = GetComponent<AudioSource>();
         weapons.Add(Weapons.MagicMissile, new Vector2(0, 0));
-        weapons.Add(Weapons.Fireball, new Vector2(1, 0));
-        weapons.Add(Weapons.IceRing, new Vector2(0, 0));
+        weapons.Add(Weapons.Fireball, new Vector2(0, 0));
+        weapons.Add(Weapons.IceRing, new Vector2(1, 0));
         weapons.Add(Weapons.Sword, new Vector2(0, 0));
         weapons.Add(Weapons.ThrowingDagger, new Vector2(0, 0));
     }
