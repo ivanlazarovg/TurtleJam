@@ -1055,12 +1055,16 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 2432426205563419347, guid: 0294102e3bb22ae4c960107d90814f71, type: 3}
       propertyPath: difficulty
-      value: 0
+      value: 600
       objectReference: {fileID: 0}
     - target: {fileID: 2432426205563419347, guid: 0294102e3bb22ae4c960107d90814f71, type: 3}
       propertyPath: maxDifficulty
-      value: 100
+      value: 1000
       objectReference: {fileID: 0}
+    - target: {fileID: 2432426205563419347, guid: 0294102e3bb22ae4c960107d90814f71, type: 3}
+      propertyPath: MediumRangedEnemy
+      value: 
+      objectReference: {fileID: 8213650126341543190, guid: 7ef51206d18a8b74bbab7894257e982a, type: 3}
     - target: {fileID: 5090581752402489613, guid: 0294102e3bb22ae4c960107d90814f71, type: 3}
       propertyPath: m_Name
       value: EnemyManager

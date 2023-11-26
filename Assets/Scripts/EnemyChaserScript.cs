@@ -15,6 +15,7 @@ public class EnemyChaserScript : MonoBehaviour
     [SerializeField] private float distanceToPlayer; // determines if it should try getting closer to player
 
     [SerializeField] bool rotateEnemyTowardsPlayer;
+    [SerializeField] bool invertFlip;
     SpriteRenderer spriteRenderer;
 
     
@@ -31,16 +32,9 @@ public class EnemyChaserScript : MonoBehaviour
             this.transform.position = Vector3.MoveTowards(this.transform.position, playerReference.transform.position, movementSpeed);
             if (rotateEnemyTowardsPlayer) 
             {
-                if (transform.position.x > playerReference.transform.position.x) 
-                {
-                    
-                    spriteRenderer.flipX = false;
-                }
-                else 
-                {
-                    Debug.Log("God Help");
-                    spriteRenderer.flipX = true;
-                }
+                if (transform.position.x > playerReference.transform.position.x) spriteRenderer.flipX = false;
+                else spriteRenderer.flipX = true;
+                if(invertFlip) spriteRenderer.flipX = !spriteRenderer.flipX;
             }
         }
 

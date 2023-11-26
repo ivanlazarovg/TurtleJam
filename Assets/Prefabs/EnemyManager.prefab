@@ -47,6 +47,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   LightMeleeEnemy: {fileID: 8213650126341543190, guid: e275b3d1e6d38024ab013bb035fbb795, type: 3}
   LightRangedEnemy: {fileID: 8213650126341543190, guid: 6f7e005d149060442a1376e49a733704, type: 3}
+  MediumMeleeEnemy: {fileID: 8213650126341543190, guid: 580c722afed559a4e88a4ef20b6465d0, type: 3}
   distanceToSpawn: 10
   difficulty: 0
   maxDifficulty: 100
