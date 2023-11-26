@@ -75,7 +75,7 @@ public class TaskWriting : Task
             if (index == currentWords.Length)
             {
                 isTaskRunning = false;
-                AddCoins(Mathf.Round(currentWords.Length / 3 + (currentWords.Length / taskTimer) / 25));
+                AddCoins(Mathf.Round((currentWords.Length / (taskTimer*2)) / 25));
 
 
             }
@@ -123,7 +123,7 @@ public class TaskWriting : Task
             {
                 Debug.Log("isin");
                 textWritten += "<color=\"green\">" + currentWords[index];
-                if (currentWords[index + 1] == ' ' && index + 1 < currentWords.Length)
+                if (currentWords[index + 1] == ' ' && index < currentWords.Length)
                 {
                     index+=2;
                     textWritten += ' ';
@@ -141,17 +141,25 @@ public class TaskWriting : Task
                 {
                     textWritten += "<color=\"red\">" + currentWords[index];
                     index++;
-                    if (index == currentWords.Length)
+                    /*if (index == currentWords.Length)
                     {
                         isTaskRunning = false;
                         AddCoins(Mathf.Round(currentWords.Length / 3 + (currentWords.Length / taskTimer) / 25));
 
-                    }
+                    }*/
                 }
                 index++;
                 textWritten += ' ';
                 timer = 0;
-                coinYield -= 0.1f;
+                if(CoinsHub.Instance.coins >= 0)
+                {
+                    AddCoins(-1);
+                }
+                else
+                {
+                    CoinsHub.Instance.coins = 0;
+                }
+                
 
             }
 

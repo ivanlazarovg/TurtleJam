@@ -67,6 +67,34 @@ public class TaskCrypto : Task
     // Update is called once per frame
     void Update()
     {
+        if (Input.GetKeyDown(KeyCode.Space))
+        {
+            if (interactionPhase == 1)
+            {
+                if (isInWindow)
+                {
+                    interactionPhase++;
+                }
+                else if (!isInWindow)
+                {
+                    GetNextOre();
+                }
+            }
+            else if (interactionPhase == 2)
+            {
+                if (!hasHit)
+                {
+                    currentHealth -= (int)pointerDistanceFromCenter;
+                    orePlaceHolder.transform.localScale -= new Vector3(pointerDistanceFromCenter
+                    / OreGenerator.Instance.orePresets[OreGenerator.Instance.oreIndex].healthPoints * 0.2f,
+                    pointerDistanceFromCenter / OreGenerator.Instance.orePresets[OreGenerator.Instance.oreIndex].healthPoints * 0.2f);
+                    barRenderer.color = firstPhaseBarColor;
+                    hasHit = true;
+                    Invoke("SwitchOreHit", 1f);
+                }
+
+            }
+        }
 
         if (hasHit)
         {     
@@ -135,35 +163,14 @@ public class TaskCrypto : Task
     public void MineButton()
     {
 
-        if (interactionPhase == 1)
-        {
-            if (isInWindow)
-            {
-                interactionPhase++;
-            }
-            else if (!isInWindow)
-            {
-                GetNextOre();
-            }
-        }
-        else if (interactionPhase == 2)
-        {
-            if (!hasHit)
-            {
-                currentHealth -= (int)pointerDistanceFromCenter;
-                orePlaceHolder.transform.localScale -= new Vector3(pointerDistanceFromCenter
-                / OreGenerator.Instance.orePresets[OreGenerator.Instance.oreIndex].healthPoints * 0.2f,
-                pointerDistanceFromCenter / OreGenerator.Instance.orePresets[OreGenerator.Instance.oreIndex].healthPoints * 0.2f);
-                barRenderer.color = firstPhaseBarColor;
-                hasHit = true;
-                Invoke("SwitchOreHit", 1f);
-            }
-           
-        }
+        
     }
 
     void MineState()
     {
+       
+ 
+
         timerToTrack += Time.deltaTime;
         if (!hasHit)
         {
