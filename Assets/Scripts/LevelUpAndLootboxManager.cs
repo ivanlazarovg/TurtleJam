@@ -11,6 +11,16 @@ public class LevelUpAndLootboxManager : MonoBehaviour
     [SerializeField] private float levelUpPrice;
     [SerializeField] private float lootboxPrice;
 
+    [SerializeField] Sprite MagicMissileSprite;
+    [SerializeField] Sprite FireballSprite;
+    [SerializeField] Sprite RingOfIceSprite;
+    [SerializeField] Sprite SwordSprite;
+    [SerializeField] Sprite ThrowingDagger;
+    
+
+    [SerializeField] GameObject lootboxLooks;
+    [SerializeField] Image lootboxSprite;
+
     [SerializeField] AudioClip LevelUpClip;
     [SerializeField] AudioClip LootboxClip;
     [SerializeField] AudioClip WrongClip;
@@ -25,6 +35,8 @@ public class LevelUpAndLootboxManager : MonoBehaviour
         audioSource = GetComponent<AudioSource>();
         CoinsHub.Instance.coins += 10;
         playerController = FindAnyObjectByType<PlayerController>();
+
+        lootboxLooks.SetActive(false);
     }
 
     void LevelUp() 
@@ -85,12 +97,39 @@ public class LevelUpAndLootboxManager : MonoBehaviour
 
             playerController.ImproveInventory(newWeapon);
 
+            switch (newWeapon) 
+            {
+                case PlayerController.Weapons.MagicMissile:
+                    lootboxSprite.sprite = MagicMissileSprite;
+                    break;
+                case PlayerController.Weapons.Fireball:
+                    lootboxSprite.sprite = FireballSprite;
+                    break;
+                case PlayerController.Weapons.IceRing:
+                    lootboxSprite.sprite = RingOfIceSprite;
+                    break;
+                case PlayerController.Weapons.Sword:
+                    lootboxSprite.sprite = SwordSprite;
+                    break;
+                case PlayerController.Weapons.ThrowingDagger:
+                    lootboxSprite.sprite = ThrowingDagger;
+                    break;
+            }
+
+            StartCoroutine(ShowLootbox());
         }
         else 
         {
             audioSource.clip = WrongClip;
             audioSource.Play();
         }
+    }
+
+    private IEnumerator ShowLootbox() 
+    {
+        lootboxLooks.SetActive(true);
+        yield return new WaitForSeconds(1f);
+        lootboxLooks.SetActive(false);
     }
 
     enum PossibleUpgrades 

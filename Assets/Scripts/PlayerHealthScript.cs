@@ -1,6 +1,7 @@
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.SceneManagement;
 
 public class PlayerHealthScript : MonoBehaviour
 {
@@ -31,6 +32,11 @@ public class PlayerHealthScript : MonoBehaviour
         audioSource.Play();
         spriteRenderer.transform.localScale = new Vector3(health * 10, spriteRenderer.transform.localScale.y, spriteRenderer.transform.localScale.y);
         spriteRenderer2.transform.localScale = new Vector3(maxHealth * 10, spriteRenderer.transform.localScale.y, spriteRenderer.transform.localScale.y);
+
+        if (health <= 0) 
+        {
+            SceneManager.LoadScene("Main Menu", LoadSceneMode.Single);
+        }
     }
 
     public void IncreaseMaxHealth(int amount) 
