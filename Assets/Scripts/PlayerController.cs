@@ -31,9 +31,9 @@ public class PlayerController : MonoBehaviour {
     {
         audioSource = GetComponent<AudioSource>();
         weapons.Add(Weapons.MagicMissile, new Vector2(0, 0));
-        weapons.Add(Weapons.Fireball, new Vector2(0, 0));
+        weapons.Add(Weapons.Fireball, new Vector2(1, 0));
         weapons.Add(Weapons.IceRing, new Vector2(0, 0));
-        weapons.Add(Weapons.Sword, new Vector2(1, 0));
+        weapons.Add(Weapons.Sword, new Vector2(0, 0));
         weapons.Add(Weapons.ThrowingDagger, new Vector2(0, 0));
     }
 
@@ -134,7 +134,7 @@ public class PlayerController : MonoBehaviour {
     private void FireFireball()
     {
         GameObject projectile = Instantiate(fireball, transform.position, transform.rotation);
-        projectile.GetComponent<PlayerProjectile>().SetStats(0.1f, baseDamage * (int)weapons[Weapons.Fireball].x * 2, 1.5f * weapons[Weapons.Fireball].x, PlayerProjectile.ShotType.ClosestEnemy, false,3f);
+        projectile.GetComponent<PlayerProjectile>().SetStats(0.1f, baseDamage * (int)weapons[Weapons.Fireball].x * 2, 3f * weapons[Weapons.Fireball].x, PlayerProjectile.ShotType.ClosestEnemy, false,3f);
     }
 
     private void FireIceRing() 
