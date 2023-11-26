@@ -1,6 +1,7 @@
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using TMPro;
 
 public class TaskCrypto : MonoBehaviour
 {
@@ -28,6 +29,12 @@ public class TaskCrypto : MonoBehaviour
     private int currentHealth;
     private Color currentColor;
 
+    Vector3 startOreSize;
+
+    public SpriteRenderer barRenderer;
+    public TextMeshProUGUI healthtext;
+    public Color firstPhaseBarColor;
+
     private static TaskCrypto _instance;
 
     public static TaskCrypto Instance
@@ -43,6 +50,10 @@ public class TaskCrypto : MonoBehaviour
         }
     }
 
+    private void Start()
+    {
+        startOreSize = orePlaceHolder.transform.localScale;
+    }
 
     // Update is called once per frame
     void Update()
@@ -69,7 +80,7 @@ public class TaskCrypto : MonoBehaviour
             if (timer >= 1)
             {
                 pingpongswitch = true;
-                //pointerSpeed = Random.Range(1.2f, 2.5f);
+                pointerSpeed = Random.Range(1.2f, 2.3f);
             }
         }
         else if (pingpongswitch)
@@ -78,7 +89,7 @@ public class TaskCrypto : MonoBehaviour
             if (timer <= 0)
             {
                 pingpongswitch = false;
-                //pointerSpeed = Random.Range(1.2f, 2.5f);
+                pointerSpeed = Random.Range(1.2f, 2.3f);
             }
         }
 
@@ -87,8 +98,8 @@ public class TaskCrypto : MonoBehaviour
     }
 
     void StartState()
-    { 
-        
+    {
+        barRenderer.color = firstPhaseBarColor;
         pointerSpeed = pointerSpeedStartState;
         bar.SetActive(true);
         window.SetActive(true);
@@ -99,24 +110,33 @@ public class TaskCrypto : MonoBehaviour
     {
         if (interactionPhase == 1)
         {
+           
             if (isInWindow)
             {
                 Debug.Log("Started");
                 interactionPhase++;
             }
-            else if (isInWindow)
+            else if (!isInWindow)
             {
                 Debug.Log("Missed");
+                GetNextOre();
             }
         }
         else if(interactionPhase == 2)
         {
             currentHealth -= (int)pointerDistanceFromCenter;
+            orePlaceHolder.transform.localScale -= new Vector3(pointerDistanceFromCenter 
+                / OreGenerator.Instance.orePresets[OreGenerator.Instance.oreIndex].healthPoints * 0.25f, 
+                pointerDistanceFromCenter / OreGenerator.Instance.orePresets[OreGenerator.Instance.oreIndex].healthPoints * 0.25f);
         }
     }
 
     void MineState()
     {
+        barRenderer.color = new Color(255, 255, 255, 255);
+        healthtext.gameObject.SetActive(true);
+        healthtext.text = "Hit points: " + currentHealth;
+
         window.SetActive(false);
         if(Mathf.Abs(pointer.position.x - leftPoint.position.x) > Mathf.Abs(pointer.position.x - rightPoint.position.x))
         {
@@ -126,7 +146,7 @@ public class TaskCrypto : MonoBehaviour
         {
             pointerDistanceFromCenterRaw = Mathf.Abs(pointer.position.x - leftPoint.position.x);
         }
-        pointerDistanceFromCenter = Mathf.Round(pointerDistanceFromCenterRaw/(3+pointDifficulty));
+        pointerDistanceFromCenter = Mathf.Round(pointerDistanceFromCenterRaw/(1 + pointDifficulty));
         pointerSpeed = 1.3f + pointerDistanceFromCenterRaw / 3;
 
         if(currentHealth <= 0)
@@ -145,6 +165,7 @@ public class TaskCrypto : MonoBehaviour
         bar.SetActive(false);
         button.SetActive(false);
         interactionPhase = 0;
+        orePlaceHolder.transform.localScale = startOreSize;
 
     }
 }

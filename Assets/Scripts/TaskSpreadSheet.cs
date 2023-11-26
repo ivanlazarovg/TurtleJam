@@ -85,13 +85,12 @@ public class TaskSpreadSheet : Task
                     {
                         SlotSpreadsheet currentSlot = hit.collider.gameObject.GetComponent<SlotSpreadsheet>();
                         if (currentSlot.tier.tier == selectedSlot.tier.tier && currentSlot != selectedSlot)
-                        {
-                            StartCoroutine(ColorFlash(currentSlot.slotColor, Color.yellow, currentSlot.slotSprite, flashSpeedSelect));
-
+                        {              
                             currentSlot.tier.tier++;
                             currentSlot.tier.amount *= 2;
                             currentSlot.amountText.text = currentSlot.tier.amount.ToString();
                             selectedSlot.Nullify();
+                            StartCoroutine(ColorFlash(currentSlot.slotColor, Color.yellow, currentSlot.slotSprite, flashSpeedSelect));
                             if (currentSlot.tier.amount >= 80)
                             {
                                 currentSlot.Nullify();
