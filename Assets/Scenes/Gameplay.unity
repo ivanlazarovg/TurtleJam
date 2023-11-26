@@ -4031,8 +4031,8 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   levelUpButt: {fileID: 0}
   lootboxButt: {fileID: 0}
-  levelUpPrice: 0.99
-  lootboxPrice: 0
+  levelUpPrice: 9.99
+  lootboxPrice: 59.99
   MagicMissileSprite: {fileID: 235845972, guid: ecbbfecdddc3fb74087b357eb6e21e20, type: 3}
   FireballSprite: {fileID: 672198895, guid: ecbbfecdddc3fb74087b357eb6e21e20, type: 3}
   RingOfIceSprite: {fileID: -448930225, guid: ecbbfecdddc3fb74087b357eb6e21e20, type: 3}
