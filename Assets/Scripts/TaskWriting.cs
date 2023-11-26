@@ -24,6 +24,7 @@ public class TaskWriting : Task
     bool isTaskRunning = false;
 
     private static TaskWriting _instance;
+    public TextMeshProUGUI coinDisplay;
 
     public static TaskWriting Instance
     {
@@ -72,6 +73,14 @@ public class TaskWriting : Task
         {
             taskTimer += Time.deltaTime;
         }
+        else
+        {
+            coinDisplay.text = CoinsHub.Instance.coins.ToString();
+            if (Input.GetKeyDown(KeyCode.Space))
+            {
+                GenerateWordString();
+            }
+        }
     }
 
     void GenerateWordString()
@@ -91,49 +100,55 @@ public class TaskWriting : Task
 
     private void OnGUI()
     {
-        Event e = Event.current;
-        if (e.isKey && e.type == EventType.KeyDown && e.keyCode != KeyCode.None && !isMistake && isTaskRunning)
+        if (isTaskRunning)
         {
-            Debug.Log(currentWords.Length);
-            Debug.Log(index);
-
-            if (index == currentWords.Length)
+            Event e = Event.current;
+            if (e.isKey && e.type == EventType.KeyDown && e.keyCode != KeyCode.None && !isMistake && isTaskRunning)
             {
-                isTaskRunning = false;
-                AddCoins(currentWords.Length / 6 + Mathf.Abs(currentWords.Length - taskTimer));
-                Debug.Log(CoinsHub.Instance.coins);
+                Debug.Log(currentWords.Length);
+                Debug.Log(index);
 
-            }
-            if (((char)e.keyCode) == currentWords[index])
-            {
-                textWritten += "<color=\"green\">" + currentWords[index];
-                if (currentWords[index + 1] == ' ')
+
+                if (((char)e.keyCode) == currentWords[index])
                 {
+                    textWritten += "<color=\"green\">" + currentWords[index];
+                    if (currentWords[index + 1] == ' ' && currentWords[index + 1] < currentWords.Length)
+                    {
+                        index++;
+                        textWritten += ' ';
+                    }
+                    index++;
+                }
+                else
+                {
+                    while (currentWords[index] != ' ')
+                    {
+                        textWritten += "<color=\"red\">" + currentWords[index];
+                        index++;
+                        if (index == currentWords.Length)
+                        {
+                            isTaskRunning = false;
+                            AddCoins(currentWords.Length / 6 + Mathf.Abs(currentWords.Length - taskTimer));
+
+                        }
+                    }
+                    timer = 0;
+                    isMistake = true;
+                    coinYield -= 0.1f;
+                    
                     index++;
                     textWritten += ' ';
                 }
-                index++;
-            }
-            else
-            {
-                while (currentWords[index] != ' ')
+                if (currentWords[index] == currentWords.Length)
                 {
-                    textWritten += "<color=\"red\">" + currentWords[index];
-                    index++;
-                    if (index == currentWords.Length)
-                    {
-                        isTaskRunning = false;
-                        AddCoins(currentWords.Length / 6 + Mathf.Abs(currentWords.Length - taskTimer));
+                    isTaskRunning = false;
+                    AddCoins(currentWords.Length / 3 + (currentWords.Length/taskTimer));
+                    
 
-                    }
+                    Debug.Log(CoinsHub.Instance.coins);
+
                 }
-                timer = 0;
-                isMistake = true;
-                coinYield -= 6f;
-                index++;
-                textWritten += ' ';
             }
-            
         }
         
     }

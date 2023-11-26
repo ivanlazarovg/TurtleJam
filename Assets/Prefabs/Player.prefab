@@ -180,7 +180,7 @@ Animator:
   m_GameObject: {fileID: 4097786548005799181}
   m_Enabled: 1
   m_Avatar: {fileID: 0}
-  m_Controller: {fileID: 9100000, guid: 8b2dbe006ffee974c8555a04e7d6d104, type: 2}
+  m_Controller: {fileID: 9100000, guid: 8616aedb3cf958c4cac5d7c0ab6b2e5d, type: 2}
   m_CullingMode: 0
   m_UpdateMode: 0
   m_ApplyRootMotion: 0
@@ -390,7 +390,7 @@ BoxCollider2D:
     adaptiveTiling: 0
   m_AutoTiling: 0
   serializedVersion: 2
-  m_Size: {x: 1, y: 1}
+  m_Size: {x: 0.87, y: 1.44}
   m_EdgeRadius: 0
 --- !u!82 &2973198718818495413
 AudioSource:
