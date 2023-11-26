@@ -864,7 +864,7 @@ GameObject:
   - component: {fileID: 1152573635}
   - component: {fileID: 1152573634}
   m_Layer: 0
-  m_Name: Layer_15
+  m_Name: Background
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -1052,6 +1052,14 @@ PrefabInstance:
     - target: {fileID: 1723499271828826743, guid: 0294102e3bb22ae4c960107d90814f71, type: 3}
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 2432426205563419347, guid: 0294102e3bb22ae4c960107d90814f71, type: 3}
+      propertyPath: difficulty
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 2432426205563419347, guid: 0294102e3bb22ae4c960107d90814f71, type: 3}
+      propertyPath: maxDifficulty
+      value: 100
       objectReference: {fileID: 0}
     - target: {fileID: 5090581752402489613, guid: 0294102e3bb22ae4c960107d90814f71, type: 3}
       propertyPath: m_Name
