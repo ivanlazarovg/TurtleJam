@@ -72,6 +72,13 @@ public class TaskWriting : Task
         if (isTaskRunning)
         {
             taskTimer += Time.deltaTime;
+            if (index == currentWords.Length)
+            {
+                isTaskRunning = false;
+                AddCoins(Mathf.Round(currentWords.Length / 3 + (currentWords.Length / taskTimer) / 25));
+
+
+            }
         }
         else
         {
@@ -81,15 +88,7 @@ public class TaskWriting : Task
                 GenerateWordString();
             }
         }
-        if (currentWords[index] == currentWords.Length)
-        {
-            isTaskRunning = false;
-            AddCoins(Mathf.Round(currentWords.Length / 3 + (currentWords.Length / taskTimer)/25));
-
-
-            Debug.Log(CoinsHub.Instance.coins);
-
-        }
+        
     }
 
     void GenerateWordString()
@@ -139,6 +138,12 @@ public class TaskWriting : Task
                 {
                     textWritten += "<color=\"red\">" + currentWords[index];
                     index++;
+                    if (index == currentWords.Length)
+                    {
+                        isTaskRunning = false;
+                        AddCoins(Mathf.Round(currentWords.Length / 3 + (currentWords.Length / taskTimer) / 25));
+
+                    }
                 }
                 timer = 0;
                 isMistake = true;
