@@ -4106,8 +4106,8 @@ Canvas:
   m_GameObject: {fileID: 992539884}
   m_Enabled: 1
   serializedVersion: 3
-  m_RenderMode: 0
-  m_Camera: {fileID: 0}
+  m_RenderMode: 1
+  m_Camera: {fileID: 7818761603111133852}
   m_PlaneDistance: 100
   m_PixelPerfect: 0
   m_ReceivesEvents: 1
@@ -9442,11 +9442,11 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 2432426205563419347, guid: 0294102e3bb22ae4c960107d90814f71, type: 3}
       propertyPath: difficulty
-      value: 600
+      value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 2432426205563419347, guid: 0294102e3bb22ae4c960107d90814f71, type: 3}
       propertyPath: maxDifficulty
-      value: 1000
+      value: 100
       objectReference: {fileID: 0}
     - target: {fileID: 5090581752402489613, guid: 0294102e3bb22ae4c960107d90814f71, type: 3}
       propertyPath: m_Name
@@ -9592,6 +9592,11 @@ PrefabInstance:
 --- !u!4 &7818761603111133851 stripped
 Transform:
   m_CorrespondingSourceObject: {fileID: 8263019311929895797, guid: 6e98420078436b14880ddb95e8363716, type: 3}
+  m_PrefabInstance: {fileID: 7818761603111133850}
+  m_PrefabAsset: {fileID: 0}
+--- !u!20 &7818761603111133852 stripped
+Camera:
+  m_CorrespondingSourceObject: {fileID: 8324045870135532005, guid: 6e98420078436b14880ddb95e8363716, type: 3}
   m_PrefabInstance: {fileID: 7818761603111133850}
   m_PrefabAsset: {fileID: 0}
 --- !u!1660057539 &9223372036854775807
