@@ -1,5 +1,5 @@
 fileFormatVersion: 2
-guid: 32e5d641425a9fb49ae71b841822c6e8
+guid: ecbbfecdddc3fb74087b357eb6e21e20
 TextureImporter:
   internalIDToNameTable: []
   externalObjects: {}
@@ -123,13 +123,13 @@ TextureImporter:
     serializedVersion: 2
     sprites:
     - serializedVersion: 2
-      name: RingOfFrostAttack_0
+      name: ICONS_0
       rect:
         serializedVersion: 2
-        x: 3
-        y: 1107
-        width: 753
-        height: 548
+        x: 52
+        y: 516
+        width: 743
+        height: 490
       alignment: 0
       pivot: {x: 0, y: 0}
       border: {x: 0, y: 0, z: 0, w: 0}
@@ -137,20 +137,20 @@ TextureImporter:
       physicsShape: []
       tessellationDetail: 0
       bones: []
-      spriteID: 8295e03162884834aa93ad20d586264b
-      internalID: -380042863
+      spriteID: 734ec3f11c64c6a4a879bd5a7a671a4a
+      internalID: -448930225
       vertices: []
       indices: 
       edges: []
       weights: []
     - serializedVersion: 2
-      name: RingOfFrostAttack_1
+      name: ICONS_1
       rect:
         serializedVersion: 2
-        x: 774
-        y: 1082
-        width: 665
-        height: 579
+        x: 925
+        y: 556
+        width: 531
+        height: 452
       alignment: 0
       pivot: {x: 0, y: 0}
       border: {x: 0, y: 0, z: 0, w: 0}
@@ -158,20 +158,20 @@ TextureImporter:
       physicsShape: []
       tessellationDetail: 0
       bones: []
-      spriteID: 57607bb3915ff1743939e4b2ea5bbf2e
-      internalID: 938203697
+      spriteID: 5812b28c7279e9c46a10785270141996
+      internalID: 672198895
       vertices: []
       indices: 
       edges: []
       weights: []
     - serializedVersion: 2
-      name: RingOfFrostAttack_2
+      name: ICONS_2
       rect:
         serializedVersion: 2
-        x: 1477
-        y: 1067
-        width: 856
-        height: 594
+        x: 1640
+        y: 570
+        width: 454
+        height: 443
       alignment: 0
       pivot: {x: 0, y: 0}
       border: {x: 0, y: 0, z: 0, w: 0}
@@ -179,20 +179,20 @@ TextureImporter:
       physicsShape: []
       tessellationDetail: 0
       bones: []
-      spriteID: d08e3b3e0f1783348a7bbe24c0a82d36
-      internalID: -1348136507
+      spriteID: a796c1ab996b2c04389c9170c5faf41a
+      internalID: -591945248
       vertices: []
       indices: 
       edges: []
       weights: []
     - serializedVersion: 2
-      name: RingOfFrostAttack_3
+      name: ICONS_3
       rect:
         serializedVersion: 2
-        x: 213
-        y: 462
-        width: 613
-        height: 385
+        x: 96
+        y: 92
+        width: 685
+        height: 332
       alignment: 0
       pivot: {x: 0, y: 0}
       border: {x: 0, y: 0, z: 0, w: 0}
@@ -200,20 +200,20 @@ TextureImporter:
       physicsShape: []
       tessellationDetail: 0
       bones: []
-      spriteID: 9a96f440f5af07b44b78beefd10f533a
-      internalID: 1533157091
+      spriteID: 72d917f9b79e2714d9ce1f1830754aa6
+      internalID: -561159046
       vertices: []
       indices: 
       edges: []
       weights: []
     - serializedVersion: 2
-      name: RingOfFrostAttack_4
+      name: ICONS_4
       rect:
         serializedVersion: 2
-        x: 1044
-        y: 473
-        width: 707
-        height: 438
+        x: 943
+        y: 99
+        width: 532
+        height: 383
       alignment: 0
       pivot: {x: 0, y: 0}
       border: {x: 0, y: 0, z: 0, w: 0}
@@ -221,20 +221,20 @@ TextureImporter:
       physicsShape: []
       tessellationDetail: 0
       bones: []
-      spriteID: da50db44b83c5c848a964960cce68e4f
-      internalID: -1944694522
+      spriteID: 43fbcae1b594bee4aa16779e1d5b0842
+      internalID: 235845972
       vertices: []
       indices: 
       edges: []
       weights: []
     - serializedVersion: 2
-      name: RingOfFrostAttack_5
+      name: ICONS_5
       rect:
         serializedVersion: 2
-        x: 69
-        y: 36
-        width: 757
-        height: 352
+        x: 1707
+        y: 89
+        width: 350
+        height: 467
       alignment: 0
       pivot: {x: 0, y: 0}
       border: {x: 0, y: 0, z: 0, w: 0}
@@ -242,29 +242,8 @@ TextureImporter:
       physicsShape: []
       tessellationDetail: 0
       bones: []
-      spriteID: 60a470734e657134e9bc95aaa65fa33d
-      internalID: -159557274
-      vertices: []
-      indices: 
-      edges: []
-      weights: []
-    - serializedVersion: 2
-      name: RingOfFrostAttack_6
-      rect:
-        serializedVersion: 2
-        x: 1082
-        y: 10
-        width: 747
-        height: 374
-      alignment: 0
-      pivot: {x: 0, y: 0}
-      border: {x: 0, y: 0, z: 0, w: 0}
-      outline: []
-      physicsShape: []
-      tessellationDetail: 0
-      bones: []
-      spriteID: 1c8448e5973950c419bdb5b628e46e83
-      internalID: 2091249587
+      spriteID: f3895927403f4464c8408bfa6872d209
+      internalID: -1922583395
       vertices: []
       indices: 
       edges: []
@@ -280,13 +259,12 @@ TextureImporter:
     weights: []
     secondaryTextures: []
     nameFileIdTable:
-      RingOfFrostAttack_0: -380042863
-      RingOfFrostAttack_1: 1547963338
-      RingOfFrostAttack_2: 2043609751
-      RingOfFrostAttack_3: 938203697
-      RingOfFrostAttack_4: -1348136507
-      RingOfFrostAttack_5: 1533157091
-      RingOfFrostAttack_6: -1944694522
+      ICONS_0: -448930225
+      ICONS_1: 672198895
+      ICONS_2: -591945248
+      ICONS_3: -561159046
+      ICONS_4: 235845972
+      ICONS_5: -1922583395
   mipmapLimitGroupName: 
   pSDRemoveMatte: 0
   userData: 

@@ -13,6 +13,7 @@ GameObject:
   - component: {fileID: 4362336769237712199}
   - component: {fileID: 2728470352524660885}
   - component: {fileID: 2938068492698839700}
+  - component: {fileID: 6131506947522967266}
   m_Layer: 6
   m_Name: SwordSwing
   m_TagString: Untagged
@@ -285,3 +286,24 @@ PolygonCollider2D:
       - {x: -0.305, y: -2.1625}
       - {x: -0.065, y: -2.1225}
   m_UseDelaunayMesh: 0
+--- !u!95 &6131506947522967266
+Animator:
+  serializedVersion: 5
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 5005030630342888848}
+  m_Enabled: 1
+  m_Avatar: {fileID: 0}
+  m_Controller: {fileID: 9100000, guid: 50ad86a95431b20408e615cc143971b3, type: 2}
+  m_CullingMode: 0
+  m_UpdateMode: 0
+  m_ApplyRootMotion: 0
+  m_LinearVelocityBlending: 0
+  m_StabilizeFeet: 0
+  m_WarningMessage: 
+  m_HasTransformHierarchy: 1
+  m_AllowConstantClipSamplingOptimization: 1
+  m_KeepAnimatorStateOnDisable: 0
+  m_WriteDefaultValuesOnDisable: 0

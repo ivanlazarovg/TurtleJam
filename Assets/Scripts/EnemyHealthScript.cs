@@ -9,6 +9,7 @@ public class EnemyHealthScript : MonoBehaviour
 
     private void Start()
     {
+        maxHealth += maxHealth * (int)FindAnyObjectByType<EnemyManagerScript>().maxDifficulty / 1000;
         health = maxHealth;
     }
 
