@@ -35,7 +35,7 @@ public class PlayerHealthScript : MonoBehaviour
 
         if (health <= 0) 
         {
-            SceneManager.LoadScene("Main Menu", LoadSceneMode.Single);
+            SceneManager.LoadScene("MainMenu", LoadSceneMode.Single);
         }
     }
 

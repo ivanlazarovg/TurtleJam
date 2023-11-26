@@ -59,7 +59,7 @@ public class TaskCrypto : Task
         }
     }
 
-    private void Start()
+    private void OnEnable()
     {
         startOreSize = orePlaceHolder.transform.localScale;
     }

@@ -9,6 +9,6 @@ public class CoinsUI : MonoBehaviour
 
     private void Update()
     {
-        coinText.text = "Current balance: " + CoinsHub.Instance.coins.ToString();
+        coinText.text = CoinsHub.Instance.coins.ToString();
     }
 }

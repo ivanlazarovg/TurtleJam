@@ -4,6 +4,21 @@ using UnityEngine;
 
 public class ShiftFocus : MonoBehaviour
 {
+
+    private static ShiftFocus _instance;
+
+    public static ShiftFocus Instance
+    {
+        get
+        {
+            if (_instance == null)
+            {
+                _instance = GameObject.FindObjectOfType<ShiftFocus>();
+            }
+
+            return _instance;
+        }
+    }
     public bool gameInFocus;
     void Start()
     {

@@ -13,9 +13,7 @@ public class TaskWriting : Task
     string currentWords = string.Empty;
     public TextMeshProUGUI textStencil;
     public TextMeshProUGUI textWrittenTmPro;
-    public TextMeshProUGUI textWrittenWronglyTmPro;
     string textWritten = string.Empty;
-    string textWrittenWrongly = string.Empty;
     int index = 0;
     float timer = 0;
     bool isMistake = false;
@@ -24,7 +22,8 @@ public class TaskWriting : Task
     bool isTaskRunning = false;
 
     private static TaskWriting _instance;
-    public TextMeshProUGUI coinDisplay;
+
+    public Vector2 textSizeBounds;
 
     public static TaskWriting Instance
     {
@@ -82,7 +81,6 @@ public class TaskWriting : Task
         }
         else
         {
-            coinDisplay.text = CoinsHub.Instance.coins.ToString();
             if (Input.GetKeyDown(KeyCode.Return))
             {
                 GenerateWordString();
@@ -91,10 +89,10 @@ public class TaskWriting : Task
         
     }
 
-    void GenerateWordString()
+    public void GenerateWordString()
     {
         currentWords = string.Empty;
-        int wordlength = Random.Range(1, 5);
+        int wordlength = (int)Random.Range(textSizeBounds.x, textSizeBounds.y);
         currentWords += words[Random.Range(1, words.Length)];
 
         for (int i = 0; i < wordlength; i++)
@@ -113,7 +111,7 @@ public class TaskWriting : Task
     private void OnGUI()
     {
         Event e = Event.current;
-        if (e.isKey && e.type == EventType.KeyDown && e.keyCode != KeyCode.None && isTaskRunning)
+        if (e.isKey && e.type == EventType.KeyDown && e.keyCode != KeyCode.RightShift && !ShiftFocus.Instance.gameInFocus && e.keyCode != KeyCode.None && isTaskRunning)
         {
             Debug.Log(e.keyCode);
             Debug.Log(currentWords[index]);

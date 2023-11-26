@@ -9,7 +9,6 @@ public class ShiftBetweenTasks : MonoBehaviour
     public Task[] tasks;
     public TextMeshProUGUI countdown;
     Task currentPick;
-    Task lastPick;
     public float timeMod;
 
     private void Start()
@@ -35,8 +34,21 @@ public class ShiftBetweenTasks : MonoBehaviour
             task.gameObject.SetActive(false);
         }
 
-        tasks[Random.Range(0,3)].gameObject.SetActive(true);
-        
+        currentPick = tasks[Random.Range(0, 3)];
+        currentPick.gameObject.SetActive(true);
+        if(currentPick.gameObject.GetComponent<TaskWriting>() != null )
+        {
+            TaskWriting.Instance.GenerateWordString();
+        }
+        else if(currentPick.gameObject.GetComponent<TaskCrypto>() != null)
+        {
+            TaskCrypto.Instance.GetNextOre();
+        }
+        else if(currentPick.gameObject.GetComponent<TaskSpreadSheet>() != null)
+        {
+            SpreadSheetGenerator.Instance.GenerateTable();
+        }
+
         timerToShift = timeMod;
     }
 }
