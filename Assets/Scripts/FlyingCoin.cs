@@ -12,7 +12,7 @@ public class FlyingCoin : MonoBehaviour
     }
     private void Update()
     {
-        transform.position += direction.normalized * 0.1f;
+        transform.position += direction.normalized * 8f * Time.deltaTime;
 
     }
 
