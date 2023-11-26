@@ -83,7 +83,7 @@ public class TaskWriting : Task
         else
         {
             coinDisplay.text = CoinsHub.Instance.coins.ToString();
-            if (Input.GetKeyDown(KeyCode.Space))
+            if (Input.GetKeyDown(KeyCode.Return))
             {
                 GenerateWordString();
             }
@@ -116,25 +116,31 @@ public class TaskWriting : Task
     private void OnGUI()
     {
         Event e = Event.current;
-        if (e.isKey && e.type == EventType.KeyDown && e.keyCode != KeyCode.None && !isMistake && isTaskRunning)
+        if (e.isKey && e.type == EventType.KeyDown && e.keyCode != KeyCode.None && isTaskRunning)
         {
             Debug.Log(e.keyCode);
+            Debug.Log(currentWords[index]);
 
 
             if (((char)e.keyCode) == currentWords[index])
             {
+                Debug.Log("isin");
                 textWritten += "<color=\"green\">" + currentWords[index];
-                if (currentWords[index + 1] == ' ' && currentWords[index + 1] < currentWords.Length)
+                if (currentWords[index + 1] == ' ' && index + 1 < currentWords.Length)
                 {
-                    index++;
+                    index+=2;
                     textWritten += ' ';
                 }
+                else
+                {
+                    index++;
+                }
                 
-                index++;
+                
             }
             else
             {
-                while (currentWords[index - 1] != ' ')
+                while (currentWords[index] != ' ')
                 {
                     textWritten += "<color=\"red\">" + currentWords[index];
                     index++;
@@ -145,8 +151,9 @@ public class TaskWriting : Task
 
                     }
                 }
+                index++;
+                textWritten += ' ';
                 timer = 0;
-                isMistake = true;
                 coinYield -= 0.1f;
 
 
