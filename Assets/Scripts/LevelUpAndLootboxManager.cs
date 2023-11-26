@@ -16,6 +16,7 @@ public class LevelUpAndLootboxManager : MonoBehaviour
     [SerializeField] AudioClip WrongClip;
 
     AudioSource audioSource;
+    PlayerController playerController;
 
     private void Start()
     {
@@ -23,6 +24,7 @@ public class LevelUpAndLootboxManager : MonoBehaviour
         lootboxButt.onClick.AddListener(GetLootBox);
         audioSource = GetComponent<AudioSource>();
         CoinsHub.Instance.coins += 10;
+        playerController = FindAnyObjectByType<PlayerController>();
     }
 
     void LevelUp() 
@@ -78,6 +80,11 @@ public class LevelUpAndLootboxManager : MonoBehaviour
             CoinsHub.Instance.coins -= lootboxPrice;
             audioSource.clip = LootboxClip;
             audioSource.Play();
+
+            PlayerController.Weapons newWeapon = (PlayerController.Weapons)Random.Range(0, 5);
+
+            playerController.ImproveInventory(newWeapon);
+
         }
         else 
         {

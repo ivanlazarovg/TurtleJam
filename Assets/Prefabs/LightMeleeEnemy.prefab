@@ -173,6 +173,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 387a59ba0a0117040aa753726858bf2c, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  health: 0
   maxHealth: 10
 --- !u!114 &3769511781630999671
 MonoBehaviour:
@@ -190,7 +191,6 @@ MonoBehaviour:
   damage: 1
   timeBetweenAttacks: 1
   distanceToPlayer: 0
-  moveSound: {fileID: 8300000, guid: cc3fa9773f449df499014e8e5ec5fe00, type: 3}
 --- !u!82 &3857026343178095759
 AudioSource:
   m_ObjectHideFlags: 0

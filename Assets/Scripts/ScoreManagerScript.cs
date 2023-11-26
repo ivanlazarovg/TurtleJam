@@ -15,6 +15,6 @@ public class ScoreManagerScript : MonoBehaviour
     private void UpdateInfo() 
     {
         // add ui
-        Debug.Log("Score: " + score);
+        //Debug.Log("Score: " + score);
     }
 }
