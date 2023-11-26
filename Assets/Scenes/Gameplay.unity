@@ -932,7 +932,7 @@ Transform:
   serializedVersion: 2
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
   m_LocalPosition: {x: 0.51, y: 0.10827708, z: 1}
-  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_LocalScale: {x: 2, y: 2, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children: []
   m_Father: {fileID: 0}
@@ -1061,10 +1061,6 @@ PrefabInstance:
       propertyPath: maxDifficulty
       value: 1000
       objectReference: {fileID: 0}
-    - target: {fileID: 2432426205563419347, guid: 0294102e3bb22ae4c960107d90814f71, type: 3}
-      propertyPath: MediumRangedEnemy
-      value: 
-      objectReference: {fileID: 8213650126341543190, guid: 7ef51206d18a8b74bbab7894257e982a, type: 3}
     - target: {fileID: 5090581752402489613, guid: 0294102e3bb22ae4c960107d90814f71, type: 3}
       propertyPath: m_Name
       value: EnemyManager

@@ -10,7 +10,7 @@ public class EnemyProjectileScript : MonoBehaviour
 
     private void OnEnable()
     {
-        Invoke(nameof(KillYourself), 2f);
+        Invoke(nameof(KillYourself), 5f);
     }
 
     public void SetStats(float speed, int damage) 

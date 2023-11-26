@@ -247,6 +247,7 @@ MonoBehaviour:
   timeBetweenAttacks: 3
   distanceToPlayer: 4
   rotateEnemyTowardsPlayer: 0
+  invertFlip: 0
 --- !u!114 &4581269027354448006
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -261,9 +262,9 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   distanceToFire: 5
   damage: 1
-  projectileSpeed: 0.1
+  projectileSpeed: 0.05
   timeBetweenAttacks: 2
-  projectile: {fileID: 5005030630342888848, guid: b6868b671824f8e41aa72af116bb4172, type: 3}
+  projectile: {fileID: 5005030630342888848, guid: fa9f2bd86c49d224c957f6ab817b57e7, type: 3}
 --- !u!82 &-3717571498898196165
 AudioSource:
   m_ObjectHideFlags: 0

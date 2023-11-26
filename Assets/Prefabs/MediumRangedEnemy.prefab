@@ -260,11 +260,11 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 87ca0c22ef6ec014ba719d6193df0804, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  distanceToFire: 7
+  distanceToFire: 8
   damage: 5
-  projectileSpeed: 0.05
-  timeBetweenAttacks: 2
-  projectile: {fileID: 5005030630342888848, guid: b6868b671824f8e41aa72af116bb4172, type: 3}
+  projectileSpeed: 0.03
+  timeBetweenAttacks: 3
+  projectile: {fileID: 5005030630342888848, guid: 2f914eca5da352e46ba46c2183165b1c, type: 3}
 --- !u!82 &-3717571498898196165
 AudioSource:
   m_ObjectHideFlags: 0
