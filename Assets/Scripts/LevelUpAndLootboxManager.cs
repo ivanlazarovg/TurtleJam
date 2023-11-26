@@ -5,8 +5,8 @@ using UnityEngine.UI;
 
 public class LevelUpAndLootboxManager : MonoBehaviour
 {
-    [SerializeField] private Button levelUpButt;
-    [SerializeField] private Button lootboxButt;
+    [SerializeField] public Button levelUpButt;
+    [SerializeField] public Button lootboxButt;
 
     [SerializeField] private float levelUpPrice;
     [SerializeField] private float lootboxPrice;
