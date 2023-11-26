@@ -99,10 +99,7 @@ public class TaskWriting : Task
 
         for (int i = 0; i < wordlength; i++)
         {
-
-                currentWords += ' ' + words[Random.Range(1, words.Length)];
-            
-
+             currentWords += ' ' + words[Random.Range(1, words.Length)];
         }
         textStencil.text = string.Empty;
         textWritten = string.Empty;
@@ -135,7 +132,7 @@ public class TaskWriting : Task
                 {
                     index++;
                 }
-                
+
                 
             }
             else
@@ -156,12 +153,9 @@ public class TaskWriting : Task
                 timer = 0;
                 coinYield -= 0.1f;
 
-
             }
 
         }
-
-
 
     }
 
