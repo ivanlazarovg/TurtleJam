@@ -7,6 +7,8 @@ public class EnemyManagerScript : MonoBehaviour
 {
     [SerializeField] GameObject LightMeleeEnemy; 
     [SerializeField] GameObject LightRangedEnemy;
+    [SerializeField] GameObject MediumMeleeEnemy;
+    [SerializeField] GameObject MediumRangedEnemy;
     [SerializeField] float distanceToSpawn;
 
     public float difficulty;
@@ -31,7 +33,7 @@ public class EnemyManagerScript : MonoBehaviour
         if (currentTime<= 0) 
         {
             SpawnEnemy();
-            currentTime = timeTillNextEnemy - difficulty / 100;
+            currentTime = timeTillNextEnemy - difficulty / maxDifficulty * 1.2f;
         }
 
         if (difficulty >= maxDifficulty) 
@@ -44,15 +46,24 @@ public class EnemyManagerScript : MonoBehaviour
 
     void SpawnEnemy() 
     {
-        int enemyToSpawn = Random.Range(0, 100);
-        if (enemyToSpawn + difficulty <= 100)
+        int enemyToSpawn = Random.Range(0, 100) + (int)difficulty;
+        if (enemyToSpawn <= 100)
         {
             Instantiate(LightMeleeEnemy, RandomCircle(playerReference.transform.position, distanceToSpawn), Quaternion.identity);
         }
-        else 
+        else if (enemyToSpawn <= 200)
         {
             Instantiate(LightRangedEnemy, RandomCircle(playerReference.transform.position, distanceToSpawn), Quaternion.identity);
             audioSource.Play();
+        }
+        else if (enemyToSpawn <= 500)
+        {
+            Instantiate(MediumMeleeEnemy, RandomCircle(playerReference.transform.position, distanceToSpawn), Quaternion.identity);
+        }
+        else 
+        {
+            Instantiate(MediumRangedEnemy, RandomCircle(playerReference.transform.position, distanceToSpawn), Quaternion.identity);
+
         }
     }
 

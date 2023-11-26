@@ -43,7 +43,7 @@ Animator:
   m_GameObject: {fileID: 7263698368199793041}
   m_Enabled: 1
   m_Avatar: {fileID: 0}
-  m_Controller: {fileID: 9100000, guid: 8b2dbe006ffee974c8555a04e7d6d104, type: 2}
+  m_Controller: {fileID: 9100000, guid: bca2de8a357c0d344a8355054111336c, type: 2}
   m_CullingMode: 0
   m_UpdateMode: 0
   m_ApplyRootMotion: 0
@@ -95,7 +95,7 @@ SpriteRenderer:
   m_SortingLayerID: 0
   m_SortingLayer: 0
   m_SortingOrder: 0
-  m_Sprite: {fileID: -968355575, guid: 11ee96ed498420f479a19d4c03b014c1, type: 3}
+  m_Sprite: {fileID: 1860960581, guid: 31eaa44017924f64c877f9bc1e84194e, type: 3}
   m_Color: {r: 1, g: 1, b: 1, a: 1}
   m_FlipX: 0
   m_FlipY: 0
@@ -122,7 +122,7 @@ GameObject:
   - component: {fileID: 4581269027354448006}
   - component: {fileID: -3717571498898196165}
   m_Layer: 8
-  m_Name: LightRangedEnemy
+  m_Name: MediumRangedEnemy
   m_TagString: Enemy
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -138,7 +138,7 @@ Transform:
   serializedVersion: 2
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
   m_LocalPosition: {x: 0, y: 0, z: 0}
-  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_LocalScale: {x: 2, y: 2, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children:
   - {fileID: 482591150366305589}
@@ -229,7 +229,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   health: 0
-  maxHealth: 10
+  maxHealth: 60
 --- !u!114 &3769511781630999671
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -242,12 +242,12 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 997a31325c0439643aa87432eddc130a, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  movementSpeed: 0.01
-  damage: 1
+  movementSpeed: 0.02
+  damage: 5
   timeBetweenAttacks: 3
   distanceToPlayer: 4
-  rotateEnemyTowardsPlayer: 0
-  invertFlip: 0
+  rotateEnemyTowardsPlayer: 1
+  invertFlip: 1
 --- !u!114 &4581269027354448006
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -260,11 +260,11 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 87ca0c22ef6ec014ba719d6193df0804, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  distanceToFire: 5
-  damage: 1
-  projectileSpeed: 0.05
-  timeBetweenAttacks: 2
-  projectile: {fileID: 5005030630342888848, guid: fa9f2bd86c49d224c957f6ab817b57e7, type: 3}
+  distanceToFire: 8
+  damage: 5
+  projectileSpeed: 0.03
+  timeBetweenAttacks: 3
+  projectile: {fileID: 5005030630342888848, guid: 2f914eca5da352e46ba46c2183165b1c, type: 3}
 --- !u!82 &-3717571498898196165
 AudioSource:
   m_ObjectHideFlags: 0
