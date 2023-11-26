@@ -139,12 +139,10 @@ public class TaskCrypto : Task
         {
             if (isInWindow)
             {
-                Debug.Log("Started");
                 interactionPhase++;
             }
             else if (!isInWindow)
             {
-                Debug.Log("Missed");
                 GetNextOre();
             }
         }
@@ -189,7 +187,10 @@ public class TaskCrypto : Task
         if(currentHealth <= 0)
         {
             currentHealth = 0;
-            currentCoinsMade = (int)(3 + Mathf.Round(20 / timerToTrack));
+            currentCoinsMade = (int)(OreGenerator.Instance.orePresets[OreGenerator.Instance.oreIndex-1].healthPoints/3 +
+                Mathf.Clamp(((OreGenerator.Instance.orePresets[OreGenerator.Instance.oreIndex-1].healthPoints+2) - timerToTrack),0,40 ));
+            Debug.Log(OreGenerator.Instance.orePresets[OreGenerator.Instance.oreIndex - 1].healthPoints);
+            Debug.Log(timerToTrack);
             AddCoins(currentCoinsMade);
             GetNextOre();
         }
@@ -210,6 +211,7 @@ public class TaskCrypto : Task
         bar.SetActive(false);
         button.SetActive(false);
         orePlaceHolder.gameObject.SetActive(false);
+        timerToTrack = 0;
         interactionPhase = 0;
         orePlaceHolder.transform.localScale = startOreSize;
 
