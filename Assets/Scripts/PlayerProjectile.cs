@@ -10,7 +10,7 @@ public class PlayerProjectile : MonoBehaviour {
     [SerializeField] private float moveSpeed;
     [SerializeField] private LayerMask enemyMask;
 
-    private int damage;
+    [SerializeField] private int damage;
     private float areaSize;
     private ShotType shotType;
     private GameObject targetReference;

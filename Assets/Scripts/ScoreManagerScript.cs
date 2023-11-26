@@ -4,7 +4,7 @@ using UnityEngine;
 
 public class ScoreManagerScript : MonoBehaviour
 {
-    [SerializeField] private int score;
+    [SerializeField] public int score;
 
     public void AddScore(int add) 
     {

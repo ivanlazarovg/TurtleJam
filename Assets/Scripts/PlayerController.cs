@@ -25,6 +25,11 @@ public class PlayerController : MonoBehaviour {
     [SerializeField] private GameObject throwingDagger;
 
     [SerializeField] Animator animator;
+
+    ScoreManagerScript scoreManager;
+    [SerializeField] TMPro.TextMeshProUGUI scoreText;
+
+    [SerializeField] ShiftFocus sf;
     
 
     private void Start()
@@ -35,11 +40,19 @@ public class PlayerController : MonoBehaviour {
         weapons.Add(Weapons.IceRing, new Vector2(1, 0));
         weapons.Add(Weapons.Sword, new Vector2(0, 0));
         weapons.Add(Weapons.ThrowingDagger, new Vector2(0, 0));
+
+        scoreManager = FindAnyObjectByType<ScoreManagerScript>();
+        sf = FindAnyObjectByType<ShiftFocus>();
     }
 
     private void Update() {
         horizontalAxis = Input.GetAxisRaw("Horizontal");
         verticalAxis = Input.GetAxisRaw("Vertical");
+        if (!sf.gameInFocus) 
+        {
+            horizontalAxis = 0;
+            verticalAxis = 0;
+        }
         animator.SetFloat("Speed", Mathf.Abs(horizontalAxis) + Mathf.Abs(verticalAxis));
         if (horizontalAxis > 0)
         {
@@ -50,6 +63,8 @@ public class PlayerController : MonoBehaviour {
             animator.transform.GetComponent<SpriteRenderer>().flipX = true;
         }
 
+
+        scoreText.text = "Score:" + scoreManager.score.ToString();
     }
 
     private void FixedUpdate() {
