@@ -89,6 +89,7 @@ public class TaskCrypto : Task
                     / OreGenerator.Instance.orePresets[OreGenerator.Instance.oreIndex].healthPoints * 0.2f,
                     pointerDistanceFromCenter / OreGenerator.Instance.orePresets[OreGenerator.Instance.oreIndex].healthPoints * 0.2f);
                     barRenderer.color = firstPhaseBarColor;
+                    CoinSpawner.Instance.SpawnCoins();
                     hasHit = true;
                     Invoke("SwitchOreHit", 1f);
                 }
@@ -112,11 +113,13 @@ public class TaskCrypto : Task
             {
                 coinsDisplay.text = currentCoinsMade.ToString();
             }
-            betweenTransform.SetActive(true);
-            if (Input.GetKeyUp(KeyCode.Space))
+           
+            if (Input.GetKeyDown(KeyCode.Space))
             {
                 interactionPhase = 1;
             }
+            betweenTransform.SetActive(true);
+            healthtext.gameObject.SetActive(false);
         }
         else if(interactionPhase == 1)
         {
@@ -158,6 +161,7 @@ public class TaskCrypto : Task
         bar.SetActive(true);
         window.SetActive(true);
         button.SetActive(true);
+        
     }
 
     public void MineButton()

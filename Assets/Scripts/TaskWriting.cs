@@ -141,12 +141,12 @@ public class TaskWriting : Task
                 {
                     textWritten += "<color=\"red\">" + currentWords[index];
                     index++;
-                    /*if (index == currentWords.Length)
+                    if (index == currentWords.Length)
                     {
                         isTaskRunning = false;
                         AddCoins(Mathf.Round(currentWords.Length / 3 + (currentWords.Length / taskTimer) / 25));
 
-                    }*/
+                    }
                 }
                 index++;
                 textWritten += ' ';
